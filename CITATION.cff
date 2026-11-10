@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the accompanying manuscript.
+title: "lead-eeg"
+type: software
+license: MIT
+repository-code: https://github.com/aftab802/lead-eeg
+version: 1.0.0
+date-released: '2026-11-11'
+authors:
+  - family-names: "ur Rehman"
+    given-names: "Muhammad Aftab"
+    affiliation: "CYBEX – School of IT Professionals (Pvt) Limited, Faisalabad, Pakistan"
+  - family-names: "ur Rehman"
+    given-names: "Muhammad Awais"
+    affiliation: "CYBEX – School of IT Professionals (Pvt) Limited, Faisalabad, Pakistan"
+  - family-names: "Sajjad"
+    given-names: "Muhammad Mohsin"
+    affiliation: "The University of Faisalabad, Pakistan"
+preferred-citation:
+  type: article
+  title: "LEAD-EEG: A Lightweight Ensemble Framework for Alzheimer's Detection from EEG"
+  status: submitted
+  year: 2026
+  authors:
+    - family-names: "ur Rehman"
+      given-names: "Muhammad Aftab"
+    - family-names: "ur Rehman"
+      given-names: "Muhammad Awais"
+    - family-names: "Sajjad"
+      given-names: "Muhammad Mohsin"
