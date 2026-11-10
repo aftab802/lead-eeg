@@ -47,7 +47,7 @@ data, `train_test_subject_overlap` (0 under the leakage-safe protocol).
 
 | Result in the paper | Value | Source of the number | Re-run with this repository? |
 |---|---|---|---|
-| 10-fold accuracy | 76.14 % | Original code not in the archive; cohort accession pending | Reimplemented; **needs the 176-subject cohort** |
+| 10-fold accuracy | 76.14 % | Original run; cohort accession pending | Needs the 176-subject cohort. Public proxy (ds004504 AD vs HC, 65 subjects): **61.54 %** |
 | Dementia precision / recall | 0.81 / 0.84 | Same | Reported in the result JSON |
 
 ## Points to resolve against the manuscript
