@@ -1,11 +1,11 @@
-# LEAD-EEG: A Lightweight Ensemble Framework for Alzheimer's Detection from EEG
+# LEAD-EEG: A Lightweight Ensemble Framework for Dementia Detection from EEG
 
 [![tests](https://github.com/aftab802/lead-eeg/actions/workflows/tests.yml/badge.svg)](https://github.com/aftab802/lead-eeg/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Energy, power and spectral-entropy biomarkers, polynomial expansion, fold-local SelectKBest and SMOTE, and an RF + GB soft-voting ensemble.
 
-Code accompanying the manuscript **“LEAD-EEG: A Lightweight Ensemble Framework for Alzheimer's Detection from EEG”** by Muhammad Aftab ur Rehman, Muhammad Awais ur Rehman, Muhammad Mohsin Sajjad (submitted, 2026).
+Code accompanying the manuscript **“LEAD-EEG: A Lightweight Ensemble Framework for Dementia Detection from EEG”** by Muhammad Aftab ur Rehman, Muhammad Awais ur Rehman, Muhammad Mohsin Sajjad (submitted, 2026).
 Corresponding author: Muhammad Aftab ur Rehman, CYBEX – School of IT Professionals (Pvt) Limited, Faisalabad, Pakistan.
 
 ## Installation
