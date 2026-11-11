@@ -34,10 +34,10 @@ The scripts read the denoised recordings in `derivatives/sub-XXX/eeg/` and label
 ## Reproducing the paper
 
 ```bash
-# LEAD-EEG cohort: CSV with columns path (any format mne.io.read_raw opens) and label (1 dementia, 0 healthy)
-python scripts/run_lead_eeg.py --labels lead_eeg_labels.csv
-# public proxy until the cohort accession is released (not the paper's cohort)
-python scripts/run_lead_eeg.py --ds004504 data/ds004504
+# the paper's cohort: 176 recordings from 88 participants (ds004504 eyes-closed + ds006036 photic stimulation)
+python scripts/run_lead_cohort176.py --ds004504 data/ds004504 --ds006036 data/ds006036
+# any other cohort: CSV with columns path (any format mne.io.read_raw opens) and label (1 dementia, 0 healthy)
+python scripts/run_lead_eeg.py --labels my_cohort.csv
 ```
 
 Every run writes a JSON file to `results/` with the test metrics, confusion matrix, split sizes and, for subject
@@ -47,14 +47,17 @@ data, `train_test_subject_overlap` (0 under the leakage-safe protocol).
 
 | Result in the paper | Value | Source of the number | Re-run with this repository? |
 |---|---|---|---|
-| 10-fold accuracy | 76.14 % | Original run; cohort accession pending | Needs the 176-subject cohort. Public proxy (ds004504 AD vs HC, 65 subjects): **61.54 %** |
+| 10-fold accuracy, recording-level folds | 76.14 % | Original run on 176 recordings (88 participants; ds004504 + ds006036) | **Re-run: 75.57 %** (`run_lead_cohort176.py`, CI job `cohort176`) |
+| 10-fold accuracy, participant-grouped folds | 73.30 % | Re-run of this code | **Re-run: 73.30 % (fold mean 73.33 ± 5.99 %)** |
 | Dementia precision / recall | 0.81 / 0.84 | Same | Reported in the result JSON |
 
 ## Points to resolve against the manuscript
 
-* With three channel-averaged biomarkers, selecting k = 25 features requires a polynomial degree of at least 4
-  (34 expanded features). The default here computes the biomarkers per channel and uses degree 2; state the
-  configuration actually used in the paper.
+* The cohort is 176 **recordings** from 88 participants (dementia = AD + FTD). Recording-level folds can split a
+  participant's two recordings across training and test; the participant-grouped figure (73.30 %) is the leakage-safe one.
+* Per-channel biomarkers (57 base features) with a degree-2 expansion reproduce the paper (75.57 %). Three
+  channel-averaged biomarkers with the degree-4 expansion needed for k = 25 give 52.27 % (58.52 % grouped).
+* ds006036 is downloaded like ds004504 (`openneuro-py download --dataset ds006036`); its denoised files are in `derivatives/eeglab/`.
 * Random-forest and gradient-boosting settings are not given in the paper; defaults used here are 300 and 100 trees.
 * Recordings are read lazily (`preload=False`), one 4-second epoch at a time.
 

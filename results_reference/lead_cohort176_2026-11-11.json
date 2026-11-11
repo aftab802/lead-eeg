@@ -1,0 +1,68 @@
+{
+ "cohort": "176 recordings / 88 participants (ds004504 v1.0.6 + ds006036 v1.0.2)",
+ "source": "GitHub Actions run 42981484644, 11 Nov 2026",
+ "per_channel_deg2": {
+  "recording_level": {
+   "acc": 0.7557,
+   "fold": [
+    0.7572,
+    0.0914
+   ],
+   "cm": [
+    [
+     36,
+     22
+    ],
+    [
+     21,
+     97
+    ]
+   ]
+  },
+  "participant_grouped": {
+   "acc": 0.733,
+   "fold": [
+    0.7333,
+    0.0599
+   ],
+   "cm": [
+    [
+     33,
+     25
+    ],
+    [
+     22,
+     96
+    ]
+   ]
+  }
+ },
+ "channel_average_deg4": {
+  "recording_level": {
+   "acc": 0.5227,
+   "cm": [
+    [
+     21,
+     37
+    ],
+    [
+     47,
+     71
+    ]
+   ]
+  },
+  "participant_grouped": {
+   "acc": 0.5852,
+   "cm": [
+    [
+     26,
+     32
+    ],
+    [
+     41,
+     77
+    ]
+   ]
+  }
+ }
+}
