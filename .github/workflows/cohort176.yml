@@ -13,13 +13,17 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt awscli
+      - name: Inspect ds006036 layout
+        run: |
+          aws s3 ls --no-sign-request s3://openneuro.org/ds006036/ | head -30
+          aws s3 ls --no-sign-request --recursive s3://openneuro.org/ds006036/ | grep -v '/sub-0[1-9][0-9]' | head -60
       - name: Download OpenNeuro ds004504 and ds006036 derivatives
         run: |
           for ds in ds004504 ds006036; do
             aws s3 sync --no-sign-request --only-show-errors s3://openneuro.org/$ds data/$ds --exclude '*' \
               --include 'participants.tsv' --include 'dataset_description.json' --include 'derivatives/*'
           done
-          ls data/ds004504/derivatives | wc -l; ls data/ds006036/derivatives | wc -l; ls data/ds006036/derivatives/sub-001/eeg
+          ls data/ds004504/derivatives | wc -l; ls data/ds006036/derivatives | wc -l; find data/ds006036 -maxdepth 4 | head -20
           head -5 data/ds006036/participants.tsv
       - run: python scripts/run_lead_cohort176.py --ds004504 data/ds004504 --ds006036 data/ds006036 2>&1 | grep -v Warning
       - run: python scripts/run_lead_eeg.py --ds004504 data/ds004504 2>&1 | tail -3
